@@ -14,15 +14,16 @@ namespace Zoo.ConsoleApp
   {
     public static void Main()
     {
-      var lions = new[]
+      var animals = new Animal[]
       {
         new Lion(new DateTime(2010, 4, 28)),
-        new Lion(new DateTime(2012, 5, 11))
+        new Lion(new DateTime(2012, 5, 11)),
+        new Rabbit(new DateTime(2014, 1, 1)) 
       };
 
       var keepers = new[]
       {
-        new Keeper(lions)
+        new Keeper(animals)
       };
 
       var scheduler = FeedingScheduler.Instance;
@@ -30,13 +31,13 @@ namespace Zoo.ConsoleApp
       while (true)
       {
         Console.WriteLine("Feeding the animals...");
-        scheduler.AssignFeedingJobs(keepers, lions);
+        scheduler.AssignFeedingJobs(keepers, animals);
 
         Console.WriteLine("Done. Results:");
 
-        foreach (var lion in lions)
+        foreach (var animal in animals)
         {
-          Console.WriteLine($" Lion, last fed {lion.LastFed}");
+          Console.WriteLine(animal);
         }
 
         Console.WriteLine();

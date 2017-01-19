@@ -5,19 +5,19 @@ namespace Zoo.BusinessLogic.Models
 {
   public class Keeper
   {
-    private List<Lion> animals;
+    private List<Animal> animals;
 
-    public Keeper(IEnumerable<Lion> animals)
+    public Keeper(IEnumerable<Animal> animals)
     {
-      this.animals = new List<Lion>(animals);
+      this.animals = new List<Animal>(animals);
     }
 
-    public IEnumerable<Lion> GetResponsibleAnimals()
+    public IEnumerable<Animal> GetResponsibleAnimals()
     {
       return animals;
     }
 
-    public void FeedAnimal(Lion animalToFeed)
+    public void FeedAnimal(Animal animalToFeed)
     {
       animalToFeed.Feed();
     }
