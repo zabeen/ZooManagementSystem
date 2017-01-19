@@ -25,7 +25,7 @@ namespace Zoo.ConsoleApp
         new Keeper(lions)
       };
 
-      var scheduler = new FeedingScheduler();
+      var scheduler = FeedingScheduler.Instance;
 
       while (true)
       {

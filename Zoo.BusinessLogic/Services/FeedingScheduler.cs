@@ -7,6 +7,25 @@ namespace Zoo.BusinessLogic.Services
 {
   public class FeedingScheduler
   {
+    private static FeedingScheduler instance;
+
+    public static FeedingScheduler Instance
+    {
+      get
+      {
+        if (instance == null)
+        {
+          instance = new FeedingScheduler();
+        }
+
+        return instance;
+      }
+    }
+
+    private FeedingScheduler()
+    {
+    }
+
     public void AssignFeedingJobs(IEnumerable<Keeper> keepers, IEnumerable<Lion> animals)
     {
       foreach (var keeper in keepers)
