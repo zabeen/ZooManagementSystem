@@ -21,5 +21,10 @@ namespace Zoo.BusinessLogic.Models
     {
       animalToFeed.Feed();
     }
+
+    public void GroomAnimal(Rabbit rabbit)
+    {
+      rabbit.Groom();
+    }
   }
 }

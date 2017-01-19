@@ -14,24 +14,32 @@ namespace Zoo.ConsoleApp
   {
     public static void Main()
     {
-      var animals = new Animal[]
+      var lions = new[]
       {
         new Lion(new DateTime(2010, 4, 28)),
-        new Lion(new DateTime(2012, 5, 11)),
+        new Lion(new DateTime(2012, 5, 11))
+      };
+      var rabbits = new[] {
         new Rabbit(new DateTime(2014, 1, 1)) 
       };
+      var animals = lions.Union<Animal>(rabbits).ToList();
 
       var keepers = new[]
       {
-        new Keeper(animals)
+        new Keeper(lions),
+        new Keeper(rabbits) 
       };
 
-      var scheduler = FeedingScheduler.Instance;
+      var feedingScheduler = FeedingScheduler.Instance;
+      var groomingScheduler = GroomingScheduler.Instance;
 
       while (true)
       {
         Console.WriteLine("Feeding the animals...");
-        scheduler.AssignFeedingJobs(keepers, animals);
+        feedingScheduler.AssignFeedingJobs(keepers, animals);
+
+        Console.WriteLine("Grooming the animals...");
+        groomingScheduler.AssignGroomingJobs(keepers, animals);
 
         Console.WriteLine("Done. Results:");
 
