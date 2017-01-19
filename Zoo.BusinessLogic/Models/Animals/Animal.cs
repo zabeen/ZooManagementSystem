@@ -22,7 +22,7 @@ namespace Zoo.BusinessLogic.Models.Animals
       get { return lastFed; }
     }
 
-    public void Feed()
+    public virtual void Feed()
     {
       lastFed = DateTime.Now;
     }

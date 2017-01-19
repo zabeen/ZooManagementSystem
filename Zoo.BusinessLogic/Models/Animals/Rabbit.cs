@@ -15,6 +15,12 @@ namespace Zoo.BusinessLogic.Models.Animals
       lastGroomed = DateTime.Now;
     }
 
+    public override void Feed()
+    {
+      Console.WriteLine("<Munch, munch>");
+      base.Feed();
+    }
+
     public override string ToString()
     {
       return base.ToString() + $"; Last Groomed {lastGroomed}";
