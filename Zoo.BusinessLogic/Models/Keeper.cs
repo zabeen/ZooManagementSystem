@@ -22,7 +22,7 @@ namespace Zoo.BusinessLogic.Models
       animalToFeed.Feed();
     }
 
-    public void GroomAnimal(ICanBeGroomed animalToGroom)
+    public void GroomAnimal(AnimalThatCanBeGroomed animalToGroom)
     {
       animalToGroom.Groom();
     }
