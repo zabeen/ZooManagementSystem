@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Models\Animals\Animal.cs" />
+    <Compile Include="Models\Animals\ICanBeGroomed.cs" />
     <Compile Include="Models\Animals\Lion.cs" />
+    <Compile Include="Models\Animals\Zebra.cs" />
     <Compile Include="Models\Animals\Rabbit.cs" />
     <Compile Include="Models\Keeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -31,11 +31,11 @@ namespace Zoo.BusinessLogic.Services
       {
         foreach (var animal in keeper.GetResponsibleAnimals())
         {
-          var rabbit = animal as Rabbit;
+          var groomableAnimal = animal as ICanBeGroomed;
 
-          if (rabbit != null)
+          if (groomableAnimal != null)
           {
-            keeper.GroomAnimal(rabbit);
+            keeper.GroomAnimal(groomableAnimal);
           }
         }
       }

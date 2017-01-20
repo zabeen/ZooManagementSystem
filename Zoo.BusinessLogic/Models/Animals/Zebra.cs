@@ -2,23 +2,17 @@
 
 namespace Zoo.BusinessLogic.Models.Animals
 {
-  public class Rabbit : Animal, ICanBeGroomed
+  public class Zebra : Animal, ICanBeGroomed
   {
     private DateTime lastGroomed;
 
-    public Rabbit(DateTime dateOfBirth) : base(dateOfBirth)
+    public Zebra(DateTime dateOfBirth) : base(dateOfBirth)
     {
     }
 
     public void Groom()
     {
       lastGroomed = DateTime.Now;
-    }
-
-    public override void Feed()
-    {
-      Console.WriteLine("<Munch, munch>");
-      base.Feed();
     }
 
     public override string ToString()
