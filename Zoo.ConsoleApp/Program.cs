@@ -14,21 +14,21 @@ namespace Zoo.ConsoleApp
   {
     public static void Main()
     {
-      var lions = new[]
+      var largeAnimals = new ILargeAnimal[]
       {
         new Lion(new DateTime(2010, 4, 28)),
-        new Lion(new DateTime(2012, 5, 11))
+        new Lion(new DateTime(2012, 5, 11)),
+        new Zebra(new DateTime(2008, 12, 1))
       };
-      var otherAnimals = new Animal[] {
+      var smallAnimals = new ISmallAnimal[] {
         new Rabbit(new DateTime(2014, 1, 1)),
-        new Zebra(new DateTime(2008, 12, 1)) 
       };
-      var animals = lions.Union(otherAnimals).ToList();
+      var animals = largeAnimals.Union<IAnimal>(smallAnimals).ToList();
 
-      var keepers = new[]
+      var keepers = new Keeper[]
       {
-        new Keeper(lions),
-        new Keeper(otherAnimals) 
+        new Keeper<ILargeAnimal>(largeAnimals),
+        new Keeper<ISmallAnimal>(smallAnimals) 
       };
 
       var feedingScheduler = FeedingScheduler.Instance;

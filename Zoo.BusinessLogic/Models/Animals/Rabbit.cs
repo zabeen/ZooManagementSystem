@@ -2,7 +2,7 @@
 
 namespace Zoo.BusinessLogic.Models.Animals
 {
-  public class Rabbit : Animal, ICanBeGroomed
+  public class Rabbit : Animal, ICanBeGroomed, ISmallAnimal
   {
     private DateTime lastGroomed;
 

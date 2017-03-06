@@ -2,7 +2,7 @@
 
 namespace Zoo.BusinessLogic.Models.Animals
 {
-  public abstract class Animal
+  public abstract class Animal : IAnimal
   {
     private readonly DateTime dateOfBirth;
     private DateTime lastFed;

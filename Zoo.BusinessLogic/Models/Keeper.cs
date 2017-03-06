@@ -4,26 +4,35 @@ using Zoo.BusinessLogic.Models.Animals;
 
 namespace Zoo.BusinessLogic.Models
 {
-  public class Keeper
+  public abstract class Keeper
   {
-    private List<Animal> animals;
+    public abstract IEnumerable<T> GetResponsibleAnimals<T>();
 
-    public Keeper(IEnumerable<Animal> animals)
+    public abstract void FeedAnimal(Animal animalToFeed);
+
+    public abstract void GroomAnimal(ICanBeGroomed animalToGroom);
+  }
+
+  public class Keeper<TAnimal> : Keeper where TAnimal : IAnimal
+  {
+    private List<TAnimal> animals;
+
+    public Keeper(IEnumerable<TAnimal> animals)
     {
-      this.animals = new List<Animal>(animals);
+      this.animals = new List<TAnimal>(animals);
     }
 
-    public IEnumerable<TAnimal> GetResponsibleAnimals<TAnimal>()
+    public override IEnumerable<T> GetResponsibleAnimals<T>()
     {
-      return animals.OfType<TAnimal>();
+      return animals.OfType<T>();
     }
 
-    public void FeedAnimal(Animal animalToFeed)
+    public override void FeedAnimal(Animal animalToFeed)
     {
       animalToFeed.Feed();
     }
 
-    public void GroomAnimal(ICanBeGroomed animalToGroom)
+    public override void GroomAnimal(ICanBeGroomed animalToGroom)
     {
       animalToGroom.Groom();
     }

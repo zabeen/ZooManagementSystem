@@ -26,7 +26,7 @@ namespace Zoo.BusinessLogic.Services
     {
     }
 
-    public void AssignFeedingJobs(IEnumerable<Keeper> keepers, IEnumerable<Animal> animals)
+    public void AssignFeedingJobs(IEnumerable<Keeper> keepers, IEnumerable<IAnimal> animals)
     {
       foreach (var keeper in keepers)
       {

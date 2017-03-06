@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zoo.BusinessLogic.Models.Animals
 {
-  public class Lion : Animal
+  public class Lion : Animal, ILargeAnimal
   {
     public Lion(DateTime dateOfBirth) : base(dateOfBirth)
     {
