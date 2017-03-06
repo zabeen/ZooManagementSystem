@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Zoo.BusinessLogic.Models.Animals;
 
 namespace Zoo.BusinessLogic.Models
@@ -12,9 +13,9 @@ namespace Zoo.BusinessLogic.Models
       this.animals = new List<Animal>(animals);
     }
 
-    public IEnumerable<Animal> GetResponsibleAnimals()
+    public IEnumerable<TAnimal> GetResponsibleAnimals<TAnimal>() where TAnimal : Animal
     {
-      return animals;
+      return animals.OfType<TAnimal>();
     }
 
     public void FeedAnimal(Animal animalToFeed)

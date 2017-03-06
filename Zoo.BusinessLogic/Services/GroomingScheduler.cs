@@ -29,14 +29,9 @@ namespace Zoo.BusinessLogic.Services
     {
       foreach (var keeper in keepers)
       {
-        foreach (var animal in keeper.GetResponsibleAnimals())
+        foreach (var animal in keeper.GetResponsibleAnimals<AnimalThatCanBeGroomed>())
         {
-          var groomableAnimal = animal as AnimalThatCanBeGroomed;
-
-          if (groomableAnimal != null)
-          {
-            keeper.GroomAnimal(groomableAnimal);
-          }
+          keeper.GroomAnimal(animal);
         }
       }
     }
