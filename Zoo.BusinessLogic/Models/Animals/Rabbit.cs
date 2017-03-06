@@ -7,6 +7,7 @@ namespace Zoo.BusinessLogic.Models.Animals
     public Rabbit(DateTime dateOfBirth) : base(dateOfBirth)
     {
     }
+
     public override void Feed()
     {
       Console.WriteLine("<Munch, munch>");

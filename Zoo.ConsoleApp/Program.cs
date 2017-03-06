@@ -23,7 +23,7 @@ namespace Zoo.ConsoleApp
         new Rabbit(new DateTime(2014, 1, 1)),
         new Zebra(new DateTime(2008, 12, 1)) 
       };
-      var animals = lions.Union<Animal>(otherAnimals).ToList();
+      var animals = lions.Union(otherAnimals).ToList();
 
       var keepers = new[]
       {
