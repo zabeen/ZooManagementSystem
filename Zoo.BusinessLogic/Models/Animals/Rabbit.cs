@@ -2,8 +2,10 @@
 
 namespace Zoo.BusinessLogic.Models.Animals
 {
-  public class Rabbit : AnimalThatCanBeGroomed
+  public class Rabbit : Animal, ICanBeGroomed
   {
+    private DateTime lastGroomed;
+
     public Rabbit(DateTime dateOfBirth) : base(dateOfBirth)
     {
     }
@@ -12,6 +14,16 @@ namespace Zoo.BusinessLogic.Models.Animals
     {
       Console.WriteLine("<Munch, munch>");
       base.Feed();
+    }
+
+    public void Groom()
+    {
+      lastGroomed = DateTime.Now;
+    }
+
+    public override string ToString()
+    {
+      return base.ToString() + $"; Last Groomed {lastGroomed}";
     }
   }
 }

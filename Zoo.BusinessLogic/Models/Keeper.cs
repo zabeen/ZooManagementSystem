@@ -13,7 +13,7 @@ namespace Zoo.BusinessLogic.Models
       this.animals = new List<Animal>(animals);
     }
 
-    public IEnumerable<TAnimal> GetResponsibleAnimals<TAnimal>() where TAnimal : Animal
+    public IEnumerable<TAnimal> GetResponsibleAnimals<TAnimal>()
     {
       return animals.OfType<TAnimal>();
     }
@@ -23,7 +23,7 @@ namespace Zoo.BusinessLogic.Models
       animalToFeed.Feed();
     }
 
-    public void GroomAnimal(AnimalThatCanBeGroomed animalToGroom)
+    public void GroomAnimal(ICanBeGroomed animalToGroom)
     {
       animalToGroom.Groom();
     }
