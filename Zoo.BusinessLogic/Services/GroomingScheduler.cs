@@ -29,9 +29,9 @@ namespace Zoo.BusinessLogic.Services
     {
       foreach (var keeper in keepers)
       {
-        foreach (var animal in keeper.GetResponsibleAnimals(typeof(AnimalThatCanBeGroomed)))
+        foreach (var animal in keeper.GetResponsibleAnimals<AnimalThatCanBeGroomed>())
         {
-          keeper.GroomAnimal((AnimalThatCanBeGroomed)animal);
+          keeper.GroomAnimal(animal);
         }
       }
     }
