@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Zoo.BusinessLogic.Models.Animals;
 
@@ -13,9 +14,9 @@ namespace Zoo.BusinessLogic.Models
       this.animals = new List<Animal>(animals);
     }
 
-    public IEnumerable<TAnimal> GetResponsibleAnimals<TAnimal>() where TAnimal : Animal
+    public IEnumerable<Animal> GetResponsibleAnimals(Type animalType)
     {
-      return animals.OfType<TAnimal>();
+      return animals.Where(animal => animal.GetType().IsSubclassOf(animalType));
     }
 
     public void FeedAnimal(Animal animalToFeed)

@@ -30,7 +30,7 @@ namespace Zoo.BusinessLogic.Services
     {
       foreach (var keeper in keepers)
       {
-        foreach (var animal in keeper.GetResponsibleAnimals<Animal>())
+        foreach (var animal in keeper.GetResponsibleAnimals(typeof(Animal)))
         {
           if (animal.IsHungry())
           {
