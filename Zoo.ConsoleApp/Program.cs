@@ -25,11 +25,17 @@ namespace Zoo.ConsoleApp
       };
       var animals = largeAnimals.Union<IAnimal>(smallAnimals).ToList();
 
-      var keepers = new Keeper[]
+      var largeAnimalKeeper = new Keeper<ILargeAnimal>(largeAnimals);
+      var smallAnimalKeeper = new Keeper<ISmallAnimal>(smallAnimals);
+
+      var keepers = new IKeeper[]
       {
-        new Keeper<ILargeAnimal>(largeAnimals),
-        new Keeper<ISmallAnimal>(smallAnimals) 
+        largeAnimalKeeper,
+        smallAnimalKeeper 
       };
+
+      var babyRabbit = new Rabbit(DateTime.Today);
+      smallAnimalKeeper.StartLookingAfter(babyRabbit);
 
       var feedingScheduler = FeedingScheduler.Instance;
       var groomingScheduler = GroomingScheduler.Instance;
