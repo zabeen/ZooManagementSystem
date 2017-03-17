@@ -40,25 +40,12 @@ namespace Zoo.ConsoleApp
       var feedingScheduler = FeedingScheduler.Instance;
       var groomingScheduler = GroomingScheduler.Instance;
 
-      while (true)
-      {
-        Console.WriteLine("Feeding the animals...");
-        feedingScheduler.AssignFeedingJobs(keepers, animals);
+      var timer = new ZooTimer();
+      new Thread(_ => timer.Run()).Start();
 
-        Console.WriteLine("Grooming the animals...");
-        groomingScheduler.AssignGroomingJobs(keepers, animals);
-
-        Console.WriteLine("Done. Results:");
-
-        foreach (var animal in animals)
-        {
-          Console.WriteLine(animal);
-        }
-
-        Console.WriteLine();
-        Thread.Sleep(1000);
-      }
-
+      timer.Tick += () => feedingScheduler.AssignFeedingJobs(keepers, animals);
+      timer.Tick += () => groomingScheduler.AssignGroomingJobs(keepers, animals);
+      timer.Tick += () => animals.ForEach(Console.WriteLine);
     }
   }
 }
