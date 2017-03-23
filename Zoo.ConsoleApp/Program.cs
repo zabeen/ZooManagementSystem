@@ -41,7 +41,7 @@ namespace Zoo.ConsoleApp
       var groomingScheduler = GroomingScheduler.Instance;
 
       var timer = new ZooTimer();
-      new Thread(_ => timer.Run()).Start();
+      new Thread(timer.Run).Start();
 
       timer.Tick += () => feedingScheduler.AssignFeedingJobs(keepers, animals);
       timer.Tick += () => groomingScheduler.AssignGroomingJobs(keepers, animals);
