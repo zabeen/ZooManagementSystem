@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
+using System.Threading.Tasks;
 using Zoo.BusinessLogic.Models;
 using Zoo.BusinessLogic.Models.Animals;
 
@@ -29,16 +30,16 @@ namespace Zoo.BusinessLogic.Services
 
     public void AssignFeedingJobs(IEnumerable<IKeeper> keepers, IEnumerable<IAnimal> animals)
     {
-      foreach (var keeper in keepers)
+      Parallel.ForEach(keepers, keeper =>
       {
         foreach (var animal in keeper.GetResponsibleAnimals<Animal>())
         {
           if (animal.IsHungry())
           {
-            ThreadPool.QueueUserWorkItem(_ => keeper.FeedAnimal(animal));
+            keeper.FeedAnimal(animal);
           }
         }
-      }
+      });
     }
   }
 }
