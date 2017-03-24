@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
+using System.Threading;
 using Zoo.BusinessLogic.Models;
 using Zoo.BusinessLogic.Models.Animals;
 
@@ -34,7 +35,7 @@ namespace Zoo.BusinessLogic.Services
         {
           if (animal.IsHungry())
           {
-            keeper.FeedAnimal(animal);
+            ThreadPool.QueueUserWorkItem(_ => keeper.FeedAnimal(animal));
           }
         }
       }
