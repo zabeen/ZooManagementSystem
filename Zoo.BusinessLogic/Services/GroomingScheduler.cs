@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Zoo.BusinessLogic.Models;
 using Zoo.BusinessLogic.Models.Animals;
@@ -30,10 +31,7 @@ namespace Zoo.BusinessLogic.Services
     {
       foreach (var keeper in keepers)
       {
-        foreach (var animal in keeper.GetResponsibleAnimals<ICanBeGroomed>())
-        {
-          Task.Run(() => keeper.GroomAnimal(animal));
-        }
+        keeper.GetResponsibleAnimals<ICanBeGroomed>().AsParallel().ForAll(keeper.GroomAnimal);
       }
     }
   }
