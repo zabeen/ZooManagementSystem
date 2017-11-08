@@ -43,6 +43,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Models\Animals\Animal.cs" />
     <Compile Include="Models\Animals\AnimalThatCanBeGroomed.cs" />
+    <Compile Include="Models\Animals\GuineaFowl.cs" />
     <Compile Include="Models\Animals\Lion.cs" />
     <Compile Include="Models\Animals\Zebra.cs" />
     <Compile Include="Models\Animals\Rabbit.cs" />

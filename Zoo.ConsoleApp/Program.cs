@@ -21,7 +21,8 @@ namespace Zoo.ConsoleApp
       };
       var otherAnimals = new Animal[] {
         new Rabbit(new DateTime(2014, 1, 1)),
-        new Zebra(new DateTime(2008, 12, 1)) 
+        new Zebra(new DateTime(2008, 12, 1)),
+        new GuineaFowl(new DateTime(2016, 6, 6))
       };
       var animals = lions.Union<Animal>(otherAnimals).ToList();
 
