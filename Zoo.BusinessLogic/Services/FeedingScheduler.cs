@@ -1,43 +1,28 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters;
 using Zoo.BusinessLogic.Models;
 using Zoo.BusinessLogic.Models.Animals;
+using System.Linq;
 
 namespace Zoo.BusinessLogic.Services
 {
-  public class FeedingScheduler
-  {
-    private static FeedingScheduler instance;
-
-    public static FeedingScheduler Instance
+    public class FeedingScheduler : Scheduler
     {
-      get
-      {
-        if (instance == null)
+        public FeedingScheduler(IEnumerable<Keeper> keepers) : base(keepers)
         {
-          instance = new FeedingScheduler();
+            _jobName = "Feeding";
         }
 
-        return instance;
-      }
-    }
-
-    private FeedingScheduler()
-    {
-    }
-
-    public void AssignFeedingJobs(IEnumerable<Keeper> keepers, IEnumerable<Animal> animals)
-    {
-      foreach (var keeper in keepers)
-      {
-        foreach (var animal in keeper.GetResponsibleAnimals())
+        public override void AssignJobs()
         {
-          if (animal.IsHungry())
-          {
-            keeper.FeedAnimal(animal);
-          }
+            _keepers.ForEach(k => k.GetResponsibleAnimals().ToList().ForEach(a => KeeperFeedAnimal(k, a)));
         }
-      }
+
+        private void KeeperFeedAnimal(Keeper keeper, Animal animal)
+        {
+            if (animal.IsHungry())
+            {
+                keeper.FeedAnimal(animal);
+            }
+        }
     }
-  }
 }
