@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Zoo.BusinessLogic.Models;
+using Zoo.BusinessLogic.Models.Animals;
 
 namespace Zoo.BusinessLogic.Services
 {
@@ -10,5 +7,6 @@ namespace Zoo.BusinessLogic.Services
     {
         string JobName { get; }
         void AssignJobs();
+        void PerformJob(Keeper keeper, Animal animal);
     }
 }

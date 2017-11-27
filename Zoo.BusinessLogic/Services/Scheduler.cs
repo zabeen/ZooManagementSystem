@@ -1,21 +1,30 @@
 ﻿using System.Collections.Generic;
-using Zoo.BusinessLogic.Models;
 using System.Linq;
+using Zoo.BusinessLogic.Models;
+using Zoo.BusinessLogic.Models.Animals;
 
 namespace Zoo.BusinessLogic.Services
 {
-    public abstract class Scheduler : IJobScheduler
-    {     
-        public string JobName { get { return _jobName; } }
+    public class Scheduler : IJobScheduler
+    {
+        public string JobName => Action;
 
-        protected string _jobName;
-        protected List<Keeper> _keepers;
+        protected string Action;
+        protected List<Keeper> Keepers;
 
         public Scheduler(IEnumerable<Keeper> keepers)
         {
-            _keepers = keepers.ToList();
+            Keepers = keepers.ToList();
         }
 
-        public abstract void AssignJobs();
+        public void AssignJobs()
+        {
+            Keepers.ForEach(k => k.GetResponsibleAnimals().ToList().ForEach(a => PerformJob(k, a)));
+        }
+
+        public virtual void PerformJob(Keeper keeper, Animal animal)
+        {
+            return;
+        }
     }
 }

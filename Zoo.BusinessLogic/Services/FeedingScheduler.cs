@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Zoo.BusinessLogic.Models;
 using Zoo.BusinessLogic.Models.Animals;
-using System.Linq;
 
 namespace Zoo.BusinessLogic.Services
 {
@@ -9,20 +8,13 @@ namespace Zoo.BusinessLogic.Services
     {
         public FeedingScheduler(IEnumerable<Keeper> keepers) : base(keepers)
         {
-            _jobName = "Feeding";
+            Action = "Feeding";
         }
 
-        public override void AssignJobs()
-        {
-            _keepers.ForEach(k => k.GetResponsibleAnimals().ToList().ForEach(a => KeeperFeedAnimal(k, a)));
-        }
-
-        private void KeeperFeedAnimal(Keeper keeper, Animal animal)
+        public override void PerformJob(Keeper keeper, Animal animal)
         {
             if (animal.IsHungry())
-            {
                 keeper.FeedAnimal(animal);
-            }
         }
     }
 }
